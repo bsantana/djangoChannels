@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'channels',
-    'exemplo'
+    'exemplo',
+    'blog'
 ]
 
 CHANNEL_LAYERS = {
