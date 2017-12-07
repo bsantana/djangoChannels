@@ -27,3 +27,24 @@ def ws_message(message):
 # Connected to websocket.disconnect
 def ws_disconnect(message):
     Group("chat").discard(message.reply_channel)
+
+def ws_connect_status(message):
+    # Accept the connection
+    message.reply_channel.send({"accept": True})
+    # Add to the chat group
+    Group("status").add(message.reply_channel)
+
+# Connected to websocket.receive
+def ws_receive_status(message):
+    Group("status").send({
+        "text": message["text"],
+    })
+
+    obj = json.loads(message["text"])
+    obj2 = message["text"]
+    print(type(obj))
+    print(type(obj2))
+
+# Connected to websocket.disconnect
+def ws_disconnect_status(message):
+    Group("status").discard(message.reply_channel)
